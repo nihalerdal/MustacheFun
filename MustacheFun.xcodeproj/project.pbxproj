@@ -10,6 +10,9 @@
 		957909F1289B2B2700466ED9 /* CreateVideoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957909F0289B2B2700466ED9 /* CreateVideoVC.swift */; };
 		957909F3289B37F000466ED9 /* VideoListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957909F2289B37F000466ED9 /* VideoListVC.swift */; };
 		957909F5289B3B0F00466ED9 /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957909F4289B3B0F00466ED9 /* VideoCell.swift */; };
+		957909FD289B670300466ED9 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957909FC289B670300466ED9 /* Video.swift */; };
+		95790A01289B7AE500466ED9 /* MustacheFun.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 957909FF289B7AE500466ED9 /* MustacheFun.xcdatamodeld */; };
+		95790A03289B7B8700466ED9 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95790A02289B7B8700466ED9 /* DataController.swift */; };
 		957B34272899FB8E0007F3E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957B34262899FB8E0007F3E2 /* AppDelegate.swift */; };
 		957B342B2899FB8E0007F3E2 /* Experience.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = 957B342A2899FB8E0007F3E2 /* Experience.rcproject */; };
 		957B342E2899FB8E0007F3E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 957B342C2899FB8E0007F3E2 /* Main.storyboard */; };
@@ -21,6 +24,9 @@
 		957909F0289B2B2700466ED9 /* CreateVideoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateVideoVC.swift; sourceTree = "<group>"; };
 		957909F2289B37F000466ED9 /* VideoListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoListVC.swift; sourceTree = "<group>"; };
 		957909F4289B3B0F00466ED9 /* VideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
+		957909FC289B670300466ED9 /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
+		95790A00289B7AE500466ED9 /* MustacheFun.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MustacheFun.xcdatamodel; sourceTree = "<group>"; };
+		95790A02289B7B8700466ED9 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		957B34232899FB8E0007F3E2 /* MustacheFun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MustacheFun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		957B34262899FB8E0007F3E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		957B342A2899FB8E0007F3E2 /* Experience.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = Experience.rcproject; sourceTree = "<group>"; };
@@ -69,6 +75,16 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		957909FE289B670C00466ED9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				957909FC289B670300466ED9 /* Video.swift */,
+				957909FF289B7AE500466ED9 /* MustacheFun.xcdatamodeld */,
+				95790A02289B7B8700466ED9 /* DataController.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		957B341A2899FB8D0007F3E2 = {
 			isa = PBXGroup;
 			children = (
@@ -90,6 +106,7 @@
 			children = (
 				957909F7289B3C4300466ED9 /* Support */,
 				957909F6289B3C0700466ED9 /* Screens */,
+				957909FE289B670C00466ED9 /* Model */,
 				957909F8289B3C4B00466ED9 /* Views */,
 			);
 			path = MustacheFun;
@@ -167,8 +184,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				957909F5289B3B0F00466ED9 /* VideoCell.swift in Sources */,
+				95790A01289B7AE500466ED9 /* MustacheFun.xcdatamodeld in Sources */,
+				957909FD289B670300466ED9 /* Video.swift in Sources */,
 				957909F3289B37F000466ED9 /* VideoListVC.swift in Sources */,
 				957B34272899FB8E0007F3E2 /* AppDelegate.swift in Sources */,
+				95790A03289B7B8700466ED9 /* DataController.swift in Sources */,
 				957909F1289B2B2700466ED9 /* CreateVideoVC.swift in Sources */,
 				957B342B2899FB8E0007F3E2 /* Experience.rcproject in Sources */,
 			);
@@ -394,6 +414,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		957909FF289B7AE500466ED9 /* MustacheFun.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				95790A00289B7AE500466ED9 /* MustacheFun.xcdatamodel */,
+			);
+			currentVersion = 95790A00289B7AE500466ED9 /* MustacheFun.xcdatamodel */;
+			path = MustacheFun.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 957B341B2899FB8D0007F3E2 /* Project object */;
 }

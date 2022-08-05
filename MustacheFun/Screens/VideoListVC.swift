@@ -6,14 +6,20 @@
 //
 
 import UIKit
+import CoreData
 
-class VideoListVC: UIViewController, UICollectionViewDelegate {
+class VideoListVC: UIViewController, UICollectionViewDelegate, NSFetchedResultsControllerDelegate {
+    
+    var dataController : DataController!
+    
+    var fetchedResultsController: NSFetchedResultsController<Video>!
 
     @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.delegate = self
+        setupFetchedResultsController()
       
     }
     
@@ -35,6 +41,20 @@ class VideoListVC: UIViewController, UICollectionViewDelegate {
         return cell
     }
     
-    
+    fileprivate func setupFetchedResultsController() {
+        //creat fetchRequest
+        let fetchRequest: NSFetchRequest<Video> = Video.fetchRequest()
+        let sortDescriptor = NSSortDescriptor(key: "creationDate", ascending: false)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: dataController.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+        fetchedResultsController.delegate = self
+        
+        do {
+            try fetchedResultsController.performFetch()
+        } catch {
+            fatalError("The fetch couldn't be performed: \(error.localizedDescription)")
+        }
+    }
 
 }

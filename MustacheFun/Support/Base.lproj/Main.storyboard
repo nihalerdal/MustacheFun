@@ -97,28 +97,26 @@
                             <arView multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="13S-CJ-dDU">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                             </arView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WDE-zE-B1o">
-                                <rect key="frame" x="312" y="405.5" width="76" height="31"/>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WDE-zE-B1o">
+                                <rect key="frame" x="312" y="396.5" width="86.5" height="49.5"/>
+                                <color key="tintColor" systemColor="systemGreenColor"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button2"/>
+                                <buttonConfiguration key="configuration" style="plain" image="mustache.fill" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="30"/>
+                                </buttonConfiguration>
                                 <connections>
-                                    <action selector="button2Pressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BHz-rb-SbA"/>
+                                    <action selector="button2Pressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2gy-dp-pI1"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TVy-8q-pzB">
-                                <rect key="frame" x="312" y="333" width="76" height="4"/>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w2n-i3-n1O">
+                                <rect key="frame" x="312" y="486" width="86.5" height="51"/>
+                                <color key="tintColor" systemColor="systemPurpleColor"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button1"/>
+                                <buttonConfiguration key="configuration" style="plain" image="mustache.fill" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="31"/>
+                                </buttonConfiguration>
                                 <connections>
-                                    <action selector="mustache1Pressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KgH-xL-UYK"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w2n-i3-n1O">
-                                <rect key="frame" x="312" y="506" width="76" height="31"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button3"/>
-                                <connections>
-                                    <action selector="button3Pressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TjZ-dJ-VEx"/>
+                                    <action selector="button3Pressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pdR-Vx-kQH"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uSG-FB-zcP">
@@ -139,40 +137,54 @@
                                     <action selector="stopButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GSH-KW-H7q"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TVy-8q-pzB">
+                                <rect key="frame" x="312" y="308" width="86.5" height="62.5"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="mustache.fill" catalog="system" imagePadding="0.0" buttonSize="mini">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="44" scale="small"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="mustache1Pressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ugv-vR-Uve"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="HZQ-ts-wfQ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="WDE-zE-B1o" firstAttribute="centerY" secondItem="INp-ca-31r" secondAttribute="centerY" id="23k-2w-MMD"/>
                             <constraint firstItem="HZQ-ts-wfQ" firstAttribute="trailing" secondItem="FPM-nc-8vT" secondAttribute="trailing" constant="120" id="2O8-8v-bp7"/>
                             <constraint firstItem="WDE-zE-B1o" firstAttribute="leading" secondItem="TVy-8q-pzB" secondAttribute="leading" id="375-Et-m2i"/>
                             <constraint firstItem="uSG-FB-zcP" firstAttribute="leading" secondItem="HZQ-ts-wfQ" secondAttribute="leading" constant="117" id="3XB-SK-KoX"/>
                             <constraint firstItem="FPM-nc-8vT" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="uSG-FB-zcP" secondAttribute="trailing" constant="8" symbolic="YES" id="7NA-t5-5HA"/>
+                            <constraint firstItem="HZQ-ts-wfQ" firstAttribute="bottom" secondItem="w2n-i3-n1O" secondAttribute="bottom" constant="305" id="85q-Pf-FcW"/>
                             <constraint firstItem="HZQ-ts-wfQ" firstAttribute="bottom" secondItem="FPM-nc-8vT" secondAttribute="bottom" constant="96" id="8uZ-xj-XeM"/>
                             <constraint firstItem="13S-CJ-dDU" firstAttribute="top" secondItem="INp-ca-31r" secondAttribute="top" id="GUv-tg-Imo"/>
+                            <constraint firstItem="WDE-zE-B1o" firstAttribute="trailing" secondItem="TVy-8q-pzB" secondAttribute="trailing" id="Ilm-CC-juj"/>
+                            <constraint firstItem="w2n-i3-n1O" firstAttribute="top" secondItem="WDE-zE-B1o" secondAttribute="bottom" constant="40" id="MA9-lp-fwA"/>
+                            <constraint firstItem="w2n-i3-n1O" firstAttribute="leading" secondItem="TVy-8q-pzB" secondAttribute="leading" id="OOc-l5-emJ"/>
                             <constraint firstItem="HZQ-ts-wfQ" firstAttribute="bottom" secondItem="uSG-FB-zcP" secondAttribute="bottom" constant="96" id="P1Y-WO-elR"/>
-                            <constraint firstItem="WDE-zE-B1o" firstAttribute="top" secondItem="TVy-8q-pzB" secondAttribute="bottom" constant="68.5" id="SbS-NK-TvC"/>
+                            <constraint firstItem="WDE-zE-B1o" firstAttribute="leading" secondItem="TVy-8q-pzB" secondAttribute="leading" id="S42-2W-Hai"/>
+                            <constraint firstItem="TVy-8q-pzB" firstAttribute="top" secondItem="HZQ-ts-wfQ" secondAttribute="top" constant="264" id="Uk0-gx-U5O"/>
                             <constraint firstItem="FPM-nc-8vT" firstAttribute="top" secondItem="uSG-FB-zcP" secondAttribute="top" id="WMx-mn-kLI"/>
                             <constraint firstItem="13S-CJ-dDU" firstAttribute="trailing" secondItem="HZQ-ts-wfQ" secondAttribute="trailing" id="WlI-Nq-bcm"/>
                             <constraint firstAttribute="bottom" secondItem="13S-CJ-dDU" secondAttribute="bottom" id="aaK-7S-dng"/>
-                            <constraint firstItem="w2n-i3-n1O" firstAttribute="leading" secondItem="TVy-8q-pzB" secondAttribute="leading" id="b21-nX-nOe"/>
-                            <constraint firstItem="w2n-i3-n1O" firstAttribute="top" secondItem="WDE-zE-B1o" secondAttribute="bottom" constant="69.5" id="bgp-vC-0h5"/>
-                            <constraint firstItem="WDE-zE-B1o" firstAttribute="centerY" secondItem="13S-CJ-dDU" secondAttribute="centerY" id="iUa-uZ-iTI"/>
-                            <constraint firstItem="TVy-8q-pzB" firstAttribute="top" secondItem="HZQ-ts-wfQ" secondAttribute="top" constant="289" id="icP-fc-KTI"/>
                             <constraint firstItem="13S-CJ-dDU" firstAttribute="leading" secondItem="HZQ-ts-wfQ" secondAttribute="leading" id="lY2-31-eyF"/>
                             <constraint firstItem="FPM-nc-8vT" firstAttribute="bottom" secondItem="uSG-FB-zcP" secondAttribute="bottom" id="mVN-Bb-czz"/>
-                            <constraint firstItem="w2n-i3-n1O" firstAttribute="trailing" secondItem="TVy-8q-pzB" secondAttribute="trailing" id="rbZ-Pm-eaf"/>
+                            <constraint firstItem="w2n-i3-n1O" firstAttribute="trailing" secondItem="TVy-8q-pzB" secondAttribute="trailing" id="ocC-OW-ASj"/>
                             <constraint firstItem="WDE-zE-B1o" firstAttribute="centerY" secondItem="INp-ca-31r" secondAttribute="centerY" id="tuv-dc-NVo"/>
                             <constraint firstItem="TVy-8q-pzB" firstAttribute="leading" secondItem="HZQ-ts-wfQ" secondAttribute="leading" constant="312" id="uCw-Xx-IUo"/>
-                            <constraint firstItem="WDE-zE-B1o" firstAttribute="trailing" secondItem="TVy-8q-pzB" secondAttribute="trailing" id="yB3-xZ-d9F"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="arView" destination="13S-CJ-dDU" id="ks0-1V-YcU"/>
+                        <outlet property="recordButton" destination="uSG-FB-zcP" id="3mz-HU-Vne"/>
+                        <outlet property="stopButton" destination="FPM-nc-8vT" id="h6r-8P-QjO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1445" y="131"/>
+            <point key="canvasLocation" x="1444.9275362318842" y="130.58035714285714"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Nq2-xB-Vnw">
@@ -196,11 +208,18 @@
     <resources>
         <image name="baseline_fiber_manual_record_white_24pt_2x" width="48" height="48"/>
         <image name="baseline_stop_white_24pt_2x" width="48" height="48"/>
+        <image name="mustache.fill" catalog="system" width="128" height="49"/>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemPurpleColor">
+            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
