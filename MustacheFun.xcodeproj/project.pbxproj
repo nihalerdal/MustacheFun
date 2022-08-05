@@ -342,6 +342,7 @@
 				DEVELOPMENT_TEAM = CS38HA4SPQ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "AR experience requires access to Camera";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "AR experience requires access to Microphone";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -372,6 +373,7 @@
 				DEVELOPMENT_TEAM = CS38HA4SPQ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "AR experience requires access to Camera";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "AR experience requires access to Microphone";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

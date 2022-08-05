@@ -12,19 +12,19 @@ import AVFoundation
 import CoreData
 
 class ViewController: UIViewController, NSFetchedResultsControllerDelegate{
-  
+    
     var video: Video!
     var dataController : DataController!
     var fetchedResultsController: NSFetchedResultsController<Video>!
-  
+    
     var captureSession: AVCaptureSession?
     var camera: AVCaptureDevice?
     var microphone: AVCaptureDevice?
     var videoOutput: AVCaptureMovieFileOutput?
     var preview: AVCaptureVideoPreviewLayer?
     
-//    var faceAnchor: Experience.Mustache1?
-
+    //    var faceAnchor: Experience.Mustache1?
+    
     @IBOutlet weak var arView: ARView!
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var stopButton: UIButton!
@@ -34,26 +34,28 @@ class ViewController: UIViewController, NSFetchedResultsControllerDelegate{
         if configureSession() {
             configurePreview()
             startSession()
-            
         }
-     
+        
     }
     
     override func viewWillAppear(_ animated: Bool){
         super.viewWillAppear(animated)
         
-       configureSession()
+        if configureSession() {
+            configurePreview()
+            startSession()
+        }
         
         let configuration = ARFaceTrackingConfiguration()
         
-//                check if it is supported
+        //                check if it is supported
         guard ARFaceTrackingConfiguration.isSupported else {
             fatalError("Face tracking is not supported on this device")
         }
-       
+        
         arView.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
     }
-        
+    
     func configureDevices(){
         
         camera = nil
@@ -68,10 +70,10 @@ class ViewController: UIViewController, NSFetchedResultsControllerDelegate{
             if device.position == .front{
                 self.camera = device
             } else if  device.hasMediaType(.audio){
-                    self.microphone = device
-                }
+                self.microphone = device
             }
         }
+    }
     
     func configureSession() -> Bool{
         guard let captureSession = captureSession else {return false}
@@ -113,12 +115,12 @@ class ViewController: UIViewController, NSFetchedResultsControllerDelegate{
     func configurePreview(){
         
         guard let captureSession = captureSession else {return}
-
+        
         preview = AVCaptureVideoPreviewLayer(session: captureSession)
         preview?.videoGravity = .resizeAspect
         preview?.frame = arView.bounds
         arView.layer.addSublayer(preview!)
-
+        
     }
     
     func startSession() {
@@ -138,6 +140,51 @@ class ViewController: UIViewController, NSFetchedResultsControllerDelegate{
             DispatchQueue.main.async {
                 captureSession.stopRunning()
             }
+        }
+    }
+    
+    func tempURL()-> URL{
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        let fileUrl = paths[0].appendingPathComponent("output.mov")
+        try? FileManager.default.removeItem(at: fileUrl)
+        return fileUrl
+    }
+    
+    func getDuration(url: URL) -> String {
+        let duration = AVURLAsset(url: url).duration.seconds
+        print(duration)
+        
+        let time: String
+        if duration > 3600 {
+            time = String(format:"%dh %dm %ds",
+                Int(duration/3600),
+                Int((duration/60).truncatingRemainder(dividingBy: 60)),
+                Int(duration.truncatingRemainder(dividingBy: 60)))
+        } else {
+            time = String(format:"%dm %ds",
+                Int((duration/60).truncatingRemainder(dividingBy: 60)),
+                Int(duration.truncatingRemainder(dividingBy: 60)))
+        }
+        print(time)
+        return time
+    }
+    
+    func startRecording(){
+        guard let videoOutput = videoOutput else {return}
+        
+        if videoOutput.isRecording == false {
+            let outputURL = tempURL()
+            videoOutput.startRecording(to: outputURL, recordingDelegate: self)
+        }else{
+            stopRecording()
+        }
+    }
+    
+    func stopRecording(){
+        guard let videoOutput = videoOutput else {return}
+        
+        if videoOutput.isRecording == true {
+            videoOutput.stopRecording()
         }
     }
     
@@ -165,6 +212,7 @@ class ViewController: UIViewController, NSFetchedResultsControllerDelegate{
         print("button pressed")
         recordButton.isEnabled = false
         stopButton.isEnabled = true
+        startRecording()
         
     }
     
@@ -190,24 +238,20 @@ class ViewController: UIViewController, NSFetchedResultsControllerDelegate{
             
             guard let text = textField.text else {return}
             
-            let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-            let fileUrl = paths[0].appendingPathComponent(text)
-            try? FileManager.default.removeItem(at: fileUrl)
-            self.videoOutput?.startRecording(to: fileUrl, recordingDelegate: self)
-            
-           
             let video = Video(context: self.dataController.viewContext)
             video.creationDate = Date()
             video.tag = text
-            video.video = fileUrl.path
-            video.preview = nil
-            video.duration = 0.0
+            video.video = tempURL().path
+//            video.preview = preview
+            video.duration = getDuration(url: tempURL())
             
             do {
                 try self.dataController.viewContext.save()
             }catch{
                 fatalError("Unable to save photos: \(error.localizedDescription)")
             }
+            
+            dismiss(animated: true, completion: nil)
         }
         
         let actionCancel = UIAlertAction(title: "Cancel", style: .default) { action in
