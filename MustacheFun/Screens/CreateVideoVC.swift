@@ -242,7 +242,7 @@ class ViewController: UIViewController, NSFetchedResultsControllerDelegate{
             video.creationDate = Date()
             video.tag = text
             video.video = tempURL().path
-//            video.preview = preview
+            video.preview = nil
             video.duration = getDuration(url: tempURL())
             
             do {

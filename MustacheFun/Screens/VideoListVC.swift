@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 
-class VideoListVC: UIViewController, UICollectionViewDelegate, NSFetchedResultsControllerDelegate {
+class VideoListVC: UIViewController, UICollectionViewDelegate, NSFetchedResultsControllerDelegate, UICollectionViewDataSource {
     
     var dataController : DataController!
     
@@ -19,24 +19,30 @@ class VideoListVC: UIViewController, UICollectionViewDelegate, NSFetchedResultsC
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.delegate = self
+        collectionView.dataSource = self
         setupFetchedResultsController()
       
     }
     
      func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return fetchedResultsController.sections?.count ?? 1
     }
     
      func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 0
+         return fetchedResultsController.sections?[section].numberOfObjects ?? 0
     }
     
-    private func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "VideoCell", for: indexPath)
+     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "VideoCell", for: indexPath) as! VideoCell
     
-        // Configure the cell
+        let aVideo = fetchedResultsController.object(at: indexPath)
+//        cell.activityIndicator.startAnimating()
+        cell.label.text = aVideo.tag
+        
+        let placeholder = UIImage(systemName: "photo")
+        cell.imageView.image = placeholder
+        
     
         return cell
     }
