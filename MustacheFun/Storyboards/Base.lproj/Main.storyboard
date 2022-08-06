@@ -101,10 +101,14 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <arView multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="13S-CJ-dDU">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="953"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </arView>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WDE-zE-B1o">
-                                <rect key="frame" x="312" y="423.5" width="86.5" height="49.5"/>
+                                <rect key="frame" x="312" y="423.5" width="90" height="49.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="49.5" id="VBW-ha-D2N"/>
+                                    <constraint firstAttribute="height" constant="49.5" id="qHO-nQ-i3i"/>
+                                </constraints>
                                 <color key="tintColor" systemColor="systemGreenColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="mustache.fill" catalog="system">
@@ -112,17 +116,6 @@
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="button2Pressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2gy-dp-pI1"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w2n-i3-n1O">
-                                <rect key="frame" x="312" y="513" width="86.5" height="44"/>
-                                <color key="tintColor" systemColor="systemPurpleColor"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="mustache.fill" catalog="system">
-                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="31"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="button3Pressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pdR-Vx-kQH"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uSG-FB-zcP">
@@ -144,7 +137,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TVy-8q-pzB">
-                                <rect key="frame" x="312" y="308" width="86.5" height="62.5"/>
+                                <rect key="frame" x="312" y="308" width="90" height="62.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="62.5" id="gzl-sK-uL6"/>
+                                </constraints>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="mustache.fill" catalog="system" imagePadding="0.0" buttonSize="mini">
@@ -152,6 +148,20 @@
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="mustache1Pressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ugv-vR-Uve"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g9H-83-coU">
+                                <rect key="frame" x="312" y="520" width="90" height="57"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="57" id="Mvo-mX-v7k"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="systemPurpleColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="mustache.fill" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="33"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="button3Pressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LUc-qG-pVf"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -162,24 +172,25 @@
                             <constraint firstItem="HZQ-ts-wfQ" firstAttribute="trailing" secondItem="FPM-nc-8vT" secondAttribute="trailing" constant="120" id="2O8-8v-bp7"/>
                             <constraint firstItem="WDE-zE-B1o" firstAttribute="leading" secondItem="TVy-8q-pzB" secondAttribute="leading" id="375-Et-m2i"/>
                             <constraint firstItem="uSG-FB-zcP" firstAttribute="leading" secondItem="HZQ-ts-wfQ" secondAttribute="leading" constant="117" id="3XB-SK-KoX"/>
+                            <constraint firstItem="g9H-83-coU" firstAttribute="trailing" secondItem="TVy-8q-pzB" secondAttribute="trailing" id="3e9-y2-WBW"/>
                             <constraint firstItem="FPM-nc-8vT" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="uSG-FB-zcP" secondAttribute="trailing" constant="8" symbolic="YES" id="7NA-t5-5HA"/>
-                            <constraint firstItem="HZQ-ts-wfQ" firstAttribute="bottom" secondItem="w2n-i3-n1O" secondAttribute="bottom" constant="305" id="85q-Pf-FcW"/>
                             <constraint firstItem="HZQ-ts-wfQ" firstAttribute="bottom" secondItem="FPM-nc-8vT" secondAttribute="bottom" constant="96" id="8uZ-xj-XeM"/>
                             <constraint firstItem="13S-CJ-dDU" firstAttribute="top" secondItem="INp-ca-31r" secondAttribute="top" id="GUv-tg-Imo"/>
                             <constraint firstItem="WDE-zE-B1o" firstAttribute="trailing" secondItem="TVy-8q-pzB" secondAttribute="trailing" id="Ilm-CC-juj"/>
-                            <constraint firstItem="w2n-i3-n1O" firstAttribute="top" secondItem="WDE-zE-B1o" secondAttribute="bottom" constant="40" id="MA9-lp-fwA"/>
-                            <constraint firstItem="w2n-i3-n1O" firstAttribute="leading" secondItem="TVy-8q-pzB" secondAttribute="leading" id="OOc-l5-emJ"/>
+                            <constraint firstItem="g9H-83-coU" firstAttribute="top" secondItem="WDE-zE-B1o" secondAttribute="bottom" constant="47" id="NAs-sL-o2q"/>
                             <constraint firstItem="HZQ-ts-wfQ" firstAttribute="bottom" secondItem="uSG-FB-zcP" secondAttribute="bottom" constant="96" id="P1Y-WO-elR"/>
                             <constraint firstItem="WDE-zE-B1o" firstAttribute="leading" secondItem="TVy-8q-pzB" secondAttribute="leading" id="S42-2W-Hai"/>
                             <constraint firstItem="TVy-8q-pzB" firstAttribute="top" secondItem="HZQ-ts-wfQ" secondAttribute="top" constant="264" id="Uk0-gx-U5O"/>
                             <constraint firstItem="FPM-nc-8vT" firstAttribute="top" secondItem="uSG-FB-zcP" secondAttribute="top" id="WMx-mn-kLI"/>
                             <constraint firstItem="13S-CJ-dDU" firstAttribute="trailing" secondItem="HZQ-ts-wfQ" secondAttribute="trailing" id="WlI-Nq-bcm"/>
+                            <constraint firstItem="g9H-83-coU" firstAttribute="leading" secondItem="TVy-8q-pzB" secondAttribute="leading" id="XSL-Yk-hEc"/>
                             <constraint firstAttribute="bottom" secondItem="13S-CJ-dDU" secondAttribute="bottom" id="aaK-7S-dng"/>
+                            <constraint firstItem="WDE-zE-B1o" firstAttribute="leading" secondItem="TVy-8q-pzB" secondAttribute="leading" id="dcb-NY-1lT"/>
                             <constraint firstItem="13S-CJ-dDU" firstAttribute="leading" secondItem="HZQ-ts-wfQ" secondAttribute="leading" id="lY2-31-eyF"/>
                             <constraint firstItem="FPM-nc-8vT" firstAttribute="bottom" secondItem="uSG-FB-zcP" secondAttribute="bottom" id="mVN-Bb-czz"/>
-                            <constraint firstItem="w2n-i3-n1O" firstAttribute="trailing" secondItem="TVy-8q-pzB" secondAttribute="trailing" id="ocC-OW-ASj"/>
                             <constraint firstItem="WDE-zE-B1o" firstAttribute="centerY" secondItem="INp-ca-31r" secondAttribute="centerY" id="tuv-dc-NVo"/>
                             <constraint firstItem="TVy-8q-pzB" firstAttribute="leading" secondItem="HZQ-ts-wfQ" secondAttribute="leading" constant="312" id="uCw-Xx-IUo"/>
+                            <constraint firstItem="WDE-zE-B1o" firstAttribute="trailing" secondItem="TVy-8q-pzB" secondAttribute="trailing" id="xsf-3c-tPc"/>
                         </constraints>
                     </view>
                     <connections>
