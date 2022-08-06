@@ -23,6 +23,9 @@ class VideoListVC: UIViewController, UICollectionViewDelegate, NSFetchedResultsC
         setupFetchedResultsController()
       
     }
+    override func viewWillAppear(_ animated: Bool) {
+        collectionView.reloadData()
+    }
     
      func numberOfSections(in collectionView: UICollectionView) -> Int {
         return fetchedResultsController.sections?.count ?? 1

@@ -12,13 +12,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
  
-    let dataController = DataController(modelName: "MustacheFun")
+    let dataController = DataController(modelName: "Mustach_Fun")
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-       dataController.load()
-        
+        dataController.load()
+    
         let navigationController = window?.rootViewController as! UINavigationController
         let videoListVC = navigationController.topViewController as! VideoListVC
         videoListVC.dataController = dataController
@@ -43,7 +43,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     }
-
 
 }
 

@@ -11,7 +11,7 @@
 		957909F3289B37F000466ED9 /* VideoListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957909F2289B37F000466ED9 /* VideoListVC.swift */; };
 		957909F5289B3B0F00466ED9 /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957909F4289B3B0F00466ED9 /* VideoCell.swift */; };
 		95790A03289B7B8700466ED9 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95790A02289B7B8700466ED9 /* DataController.swift */; };
-		95790A06289CB38D00466ED9 /* MustacheFun.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 95790A04289CB38D00466ED9 /* MustacheFun.xcdatamodeld */; };
+		95790A0B289DFFD300466ED9 /* Mustach_Fun.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 95790A09289DFFD300466ED9 /* Mustach_Fun.xcdatamodeld */; };
 		957B34272899FB8E0007F3E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957B34262899FB8E0007F3E2 /* AppDelegate.swift */; };
 		957B342B2899FB8E0007F3E2 /* Experience.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = 957B342A2899FB8E0007F3E2 /* Experience.rcproject */; };
 		957B342E2899FB8E0007F3E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 957B342C2899FB8E0007F3E2 /* Main.storyboard */; };
@@ -24,8 +24,7 @@
 		957909F2289B37F000466ED9 /* VideoListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoListVC.swift; sourceTree = "<group>"; };
 		957909F4289B3B0F00466ED9 /* VideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
 		95790A02289B7B8700466ED9 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
-		95790A05289CB38D00466ED9 /* MustacheFun.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MustacheFun.xcdatamodel; sourceTree = "<group>"; };
-		95790A07289CB7E000466ED9 /* MustacheFunV2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MustacheFunV2.xcdatamodel; sourceTree = "<group>"; };
+		95790A0A289DFFD300466ED9 /* Mustach_Fun.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Mustach_Fun.xcdatamodel; sourceTree = "<group>"; };
 		957B34232899FB8E0007F3E2 /* MustacheFun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MustacheFun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		957B34262899FB8E0007F3E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		957B342A2899FB8E0007F3E2 /* Experience.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = Experience.rcproject; sourceTree = "<group>"; };
@@ -59,9 +58,7 @@
 			children = (
 				957B34262899FB8E0007F3E2 /* AppDelegate.swift */,
 				957B342A2899FB8E0007F3E2 /* Experience.rcproject */,
-				957B342C2899FB8E0007F3E2 /* Main.storyboard */,
 				957B342F2899FB900007F3E2 /* Assets.xcassets */,
-				957B34312899FB900007F3E2 /* LaunchScreen.storyboard */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -78,9 +75,18 @@
 			isa = PBXGroup;
 			children = (
 				95790A02289B7B8700466ED9 /* DataController.swift */,
-				95790A04289CB38D00466ED9 /* MustacheFun.xcdatamodeld */,
+				95790A09289DFFD300466ED9 /* Mustach_Fun.xcdatamodeld */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		95790A08289DEC7900466ED9 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				957B342C2899FB8E0007F3E2 /* Main.storyboard */,
+				957B34312899FB900007F3E2 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 		957B341A2899FB8D0007F3E2 = {
@@ -103,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				957909F7289B3C4300466ED9 /* Support */,
+				95790A08289DEC7900466ED9 /* Storyboards */,
 				957909F6289B3C0700466ED9 /* Screens */,
 				957909FE289B670C00466ED9 /* Model */,
 				957909F8289B3C4B00466ED9 /* Views */,
@@ -182,11 +189,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				957909F5289B3B0F00466ED9 /* VideoCell.swift in Sources */,
-				95790A06289CB38D00466ED9 /* MustacheFun.xcdatamodeld in Sources */,
 				957909F3289B37F000466ED9 /* VideoListVC.swift in Sources */,
 				957B34272899FB8E0007F3E2 /* AppDelegate.swift in Sources */,
 				95790A03289B7B8700466ED9 /* DataController.swift in Sources */,
 				957909F1289B2B2700466ED9 /* CreateVideoVC.swift in Sources */,
+				95790A0B289DFFD300466ED9 /* Mustach_Fun.xcdatamodeld in Sources */,
 				957B342B2899FB8E0007F3E2 /* Experience.rcproject in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -415,14 +422,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		95790A04289CB38D00466ED9 /* MustacheFun.xcdatamodeld */ = {
+		95790A09289DFFD300466ED9 /* Mustach_Fun.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				95790A07289CB7E000466ED9 /* MustacheFunV2.xcdatamodel */,
-				95790A05289CB38D00466ED9 /* MustacheFun.xcdatamodel */,
+				95790A0A289DFFD300466ED9 /* Mustach_Fun.xcdatamodel */,
 			);
-			currentVersion = 95790A07289CB7E000466ED9 /* MustacheFunV2.xcdatamodel */;
-			path = MustacheFun.xcdatamodeld;
+			currentVersion = 95790A0A289DFFD300466ED9 /* Mustach_Fun.xcdatamodel */;
+			path = Mustach_Fun.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

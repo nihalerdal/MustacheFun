@@ -15,7 +15,6 @@ class ViewController: UIViewController, NSFetchedResultsControllerDelegate{
     
     var video: Video!
     var dataController : DataController!
-    var fetchedResultsController: NSFetchedResultsController<Video>!
     
     var captureSession: AVCaptureSession?
     var camera: AVCaptureDevice?
@@ -238,7 +237,8 @@ class ViewController: UIViewController, NSFetchedResultsControllerDelegate{
             
             guard let text = textField.text else {return}
             
-            let video = Video(context: self.dataController.viewContext)
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let video = Video(context: appDelegate.dataController.viewContext)
             video.creationDate = Date()
             video.tag = text
             video.video = tempURL().path
@@ -246,12 +246,13 @@ class ViewController: UIViewController, NSFetchedResultsControllerDelegate{
             video.duration = getDuration(url: tempURL())
             
             do {
-                try self.dataController.viewContext.save()
+                try appDelegate.dataController.viewContext.save()
             }catch{
                 fatalError("Unable to save photos: \(error.localizedDescription)")
             }
             
             dismiss(animated: true, completion: nil)
+            
         }
         
         let actionCancel = UIAlertAction(title: "Cancel", style: .default) { action in
