@@ -8,12 +8,11 @@
 import UIKit
 import CoreData
 
-class VideoListVC: UIViewController, UICollectionViewDelegate, NSFetchedResultsControllerDelegate, UICollectionViewDataSource {
+class VideoListVC: UIViewController, UICollectionViewDelegate, NSFetchedResultsControllerDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     
     var dataController : DataController!
-    
     var fetchedResultsController: NSFetchedResultsController<Video>!
-
+    
     @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
@@ -21,37 +20,39 @@ class VideoListVC: UIViewController, UICollectionViewDelegate, NSFetchedResultsC
         collectionView.delegate = self
         collectionView.dataSource = self
         setupFetchedResultsController()
-      
     }
+    
     override func viewWillAppear(_ animated: Bool) {
+        setupFetchedResultsController()
         collectionView.reloadData()
     }
     
-     func numberOfSections(in collectionView: UICollectionView) -> Int {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 200, height: 200)
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return fetchedResultsController.sections?.count ?? 1
     }
     
-     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-         return fetchedResultsController.sections?[section].numberOfObjects ?? 0
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return fetchedResultsController.sections?[section].numberOfObjects ?? 0
     }
     
-     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "VideoCell", for: indexPath) as! VideoCell
-    
-        let aVideo = fetchedResultsController.object(at: indexPath)
-//        cell.activityIndicator.startAnimating()
-        cell.label.text = aVideo.tag
         
+        let aVideo = fetchedResultsController.object(at: indexPath)
+        //        cell.activityIndicator.startAnimating()
+        cell.label.text = aVideo.tag
         let placeholder = UIImage(systemName: "photo")
         cell.imageView.image = placeholder
         
-    
         return cell
     }
     
-    fileprivate func setupFetchedResultsController() {
-        //creat fetchRequest
+    func setupFetchedResultsController() {
+        
         let fetchRequest: NSFetchRequest<Video> = Video.fetchRequest()
         let sortDescriptor = NSSortDescriptor(key: "creationDate", ascending: false)
         fetchRequest.sortDescriptors = [sortDescriptor]
@@ -65,5 +66,5 @@ class VideoListVC: UIViewController, UICollectionViewDelegate, NSFetchedResultsC
             fatalError("The fetch couldn't be performed: \(error.localizedDescription)")
         }
     }
-
+    
 }

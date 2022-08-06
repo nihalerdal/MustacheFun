@@ -34,7 +34,6 @@ class ViewController: UIViewController, NSFetchedResultsControllerDelegate{
             configurePreview()
             startSession()
         }
-        
     }
     
     override func viewWillAppear(_ animated: Bool){
@@ -156,13 +155,13 @@ class ViewController: UIViewController, NSFetchedResultsControllerDelegate{
         let time: String
         if duration > 3600 {
             time = String(format:"%dh %dm %ds",
-                Int(duration/3600),
-                Int((duration/60).truncatingRemainder(dividingBy: 60)),
-                Int(duration.truncatingRemainder(dividingBy: 60)))
+                          Int(duration/3600),
+                          Int((duration/60).truncatingRemainder(dividingBy: 60)),
+                          Int(duration.truncatingRemainder(dividingBy: 60)))
         } else {
             time = String(format:"%dm %ds",
-                Int((duration/60).truncatingRemainder(dividingBy: 60)),
-                Int(duration.truncatingRemainder(dividingBy: 60)))
+                          Int((duration/60).truncatingRemainder(dividingBy: 60)),
+                          Int(duration.truncatingRemainder(dividingBy: 60)))
         }
         print(time)
         return time
