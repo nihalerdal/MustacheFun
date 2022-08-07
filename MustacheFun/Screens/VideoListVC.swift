@@ -43,11 +43,15 @@ class VideoListVC: UIViewController, UICollectionViewDelegate, NSFetchedResultsC
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "VideoCell", for: indexPath) as! VideoCell
         
         let aVideo = fetchedResultsController.object(at: indexPath)
-        //        cell.activityIndicator.startAnimating()
+
         cell.label.text = aVideo.tag
-        let placeholder = UIImage(systemName: "photo")
-        cell.imageView.image = placeholder
         
+        if aVideo.preview != nil {
+            cell.imageView.image = UIImage(data: aVideo.preview!)
+        }else{
+            let placeholder = UIImage(systemName: "photo")
+            cell.imageView.image = placeholder
+        }
         return cell
     }
     

@@ -16,13 +16,12 @@ class ViewController: UIViewController, NSFetchedResultsControllerDelegate{
     var video: Video!
     var dataController : DataController!
     
-    var captureSession: AVCaptureSession?
     var camera: AVCaptureDevice?
     var microphone: AVCaptureDevice?
-    var videoOutput: AVCaptureMovieFileOutput?
-    var preview: AVCaptureVideoPreviewLayer?
     
-    //    var faceAnchor: Experience.Mustache1?
+    var captureSession = AVCaptureSession()
+    var videoOutput =  AVCaptureMovieFileOutput()
+    var preview = AVCaptureVideoPreviewLayer()
     
     @IBOutlet weak var arView: ARView!
     @IBOutlet weak var recordButton: UIButton!
@@ -30,28 +29,25 @@ class ViewController: UIViewController, NSFetchedResultsControllerDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if configureSession() {
-            configurePreview()
-            startSession()
-        }
     }
     
     override func viewWillAppear(_ animated: Bool){
         super.viewWillAppear(animated)
         
-        if configureSession() {
-            configurePreview()
-            startSession()
-        }
+        recordButton.isEnabled = true
+        stopButton.isEnabled = false
         
         let configuration = ARFaceTrackingConfiguration()
         
-        //                check if it is supported
+        //check if it is supported
         guard ARFaceTrackingConfiguration.isSupported else {
             fatalError("Face tracking is not supported on this device")
         }
-        
         arView.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
+        
+        if configureSession() {
+            configurePreview()
+        }
     }
     
     func configureDevices(){
@@ -73,17 +69,17 @@ class ViewController: UIViewController, NSFetchedResultsControllerDelegate{
         }
     }
     
-    func configureSession() -> Bool{
-        guard let captureSession = captureSession else {return false}
-        
+    func configureSession() -> Bool {
+    
         captureSession.sessionPreset = AVCaptureSession.Preset.high
+        
         configureDevices()
         
         if let camera = camera {
             do {
                 let cameraInput = try AVCaptureDeviceInput(device: camera)
                 captureSession.addInput(cameraInput)
-            }catch{
+            } catch {
                 error.localizedDescription
                 return false
             }
@@ -93,13 +89,11 @@ class ViewController: UIViewController, NSFetchedResultsControllerDelegate{
             do {
                 let audioInput = try AVCaptureDeviceInput(device: microphone)
                 captureSession.addInput(audioInput)
-            }catch{
+            } catch {
                 error.localizedDescription
                 return false
             }
         }
-        
-        guard let videoOutput = videoOutput else {return false}
         
         if captureSession.canAddOutput(videoOutput) {
             captureSession.addOutput(videoOutput)
@@ -111,34 +105,10 @@ class ViewController: UIViewController, NSFetchedResultsControllerDelegate{
     }
     
     func configurePreview(){
-        
-        guard let captureSession = captureSession else {return}
-        
         preview = AVCaptureVideoPreviewLayer(session: captureSession)
-        preview?.videoGravity = .resizeAspect
-        preview?.frame = arView.bounds
-        arView.layer.addSublayer(preview!)
-        
-    }
-    
-    func startSession() {
-        
-        guard let captureSession = captureSession else {return}
-        
-        if !captureSession.isRunning {
-            DispatchQueue.main.async {
-                captureSession.startRunning()
-            }
-        }
-    }
-    
-    func stopSession() {
-        guard let captureSession = captureSession else {return}
-        if captureSession.isRunning {
-            DispatchQueue.main.async {
-                captureSession.stopRunning()
-            }
-        }
+        preview.videoGravity = .resizeAspect
+        preview.frame = arView.bounds
+        arView.layer.addSublayer(preview)
     }
     
     func tempURL()-> URL{
@@ -168,21 +138,22 @@ class ViewController: UIViewController, NSFetchedResultsControllerDelegate{
     }
     
     func startRecording(){
-        guard let videoOutput = videoOutput else {return}
         
-        if videoOutput.isRecording == false {
+        if videoOutput.isRecording == true{
+            stopRecording()
+        }else{
             let outputURL = tempURL()
             videoOutput.startRecording(to: outputURL, recordingDelegate: self)
-        }else{
-            stopRecording()
         }
     }
     
     func stopRecording(){
-        guard let videoOutput = videoOutput else {return}
         
-        if videoOutput.isRecording == true {
+        if self.videoOutput.isRecording == true {
             videoOutput.stopRecording()
+            arView.session.pause()
+        }else{
+            return
         }
     }
     
@@ -215,12 +186,26 @@ class ViewController: UIViewController, NSFetchedResultsControllerDelegate{
     }
     
     @IBAction func stopButtonPressed(_ sender: Any) {
-        
-        if videoOutput?.isRecording == true {
-            videoOutput?.stopRecording()
-        }
+        stopRecording()
         configureAlert()
     }
+    
+    func videoSnapshot(filePathLocal: String) -> UIImage? {
+         let vidURL = URL(fileURLWithPath:filePathLocal as String)
+         let asset = AVURLAsset(url: vidURL)
+         let generator = AVAssetImageGenerator(asset: asset)
+         generator.appliesPreferredTrackTransform = true
+         let timestamp = CMTime(seconds: 1, preferredTimescale: 60)
+         do {
+             let image = try generator.copyCGImage(at: timestamp, actualTime: nil)
+             return UIImage(cgImage: image)
+         }
+         catch let error as NSError
+         {
+             print("Image generation failed with error \(error)")
+             return nil
+         }
+     }
     
     func configureAlert(){
         
@@ -241,7 +226,7 @@ class ViewController: UIViewController, NSFetchedResultsControllerDelegate{
             video.creationDate = Date()
             video.tag = text
             video.video = tempURL().path
-            video.preview = nil
+            video.preview = videoSnapshot(filePathLocal: tempURL().path)?.pngData()
             video.duration = getDuration(url: tempURL())
             
             do {
@@ -251,7 +236,6 @@ class ViewController: UIViewController, NSFetchedResultsControllerDelegate{
             }
             
             dismiss(animated: true, completion: nil)
-            
         }
         
         let actionCancel = UIAlertAction(title: "Cancel", style: .default) { action in
